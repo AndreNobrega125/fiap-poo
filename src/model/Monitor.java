@@ -1,4 +1,5 @@
-package br.com.fiapride.model;
+// Monitor.java
+package model;
 public class Monitor { // <-- Use o nome do SEU objeto    
     // As características que você pensou    
     public String cor;
