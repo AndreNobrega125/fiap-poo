@@ -1,24 +1,26 @@
-// Passageiro.java
-package model;
+package br.com.fiapride.model;
 
 public class Passageiro {
+
     private String nome;
     private String cpf;
     private double saldo;
 
+    // Construtor (Aula 3)
     public Passageiro(String nome, String cpf) {
-    	 this.setNome(nome);
-         this.setCpf(cpf);
-         this.setSaldo(0);
+        this.nome = nome;
+        this.cpf = cpf;
+        this.saldo = 0.0;
     }
 
+    // Métodos de comportamento (Aula 3)
     public void adicionarSaldo(double valor) {
         if (valor <= 0) {
             System.out.println("Erro: O valor de recarga deve ser maior que zero.");
             return;
         }
         this.saldo += valor;
-        System.out.println("Recarga realizada. Novo saldo: " + this.saldo);
+        System.out.println("Recarga realizada. Novo saldo: R$" + this.saldo);
     }
 
     public void pagarViagem(double custo) {
@@ -31,36 +33,11 @@ public class Passageiro {
             return;
         }
         this.saldo -= custo;
-        System.out.println("Viagem paga. Saldo restante: " + this.saldo);
+        System.out.println("Viagem paga. Saldo restante: R$" + this.saldo);
     }
 
-    // ✅ Getters e Setters ficam AQUI DENTRO, antes do } que fecha a classe
-    public double getSaldo() {
-        return this.saldo;
-    }
-
-    private void setSaldo(double valor) {
-        if (valor >= 0) {
-            this.saldo = valor;
-        } else {
-            System.out.println("Erro de Segurança: Tentativa de definir saldo negativo bloqueada!");
-        }
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    private void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getCpf() {
-        return this.cpf;
-    }
-
-    private void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-} // ✅ Apenas UMA chave fecha toda a classe
+    // Getters e Setters
+    public String getNome() { return this.nome; }
+    public String getCpf() { return this.cpf; }
+    public double getSaldo() { return this.saldo; }
+}
