@@ -1,5 +1,5 @@
 package main;
-import model.Passeiro
+import model.Passageiro
 // Importamos a classe Passageiro para que o sistema a reconheça
 
 public class SistemaPrincipal {
