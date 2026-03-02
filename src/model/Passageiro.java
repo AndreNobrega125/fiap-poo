@@ -6,14 +6,12 @@ public class Passageiro {
     private String cpf;
     private double saldo;
 
-    // Construtor (Aula 3)
     public Passageiro(String nome, String cpf) {
-        this.nome = nome;
-        this.cpf = cpf;
-        this.saldo = 0.0;
+        this.setNome(nome);
+        this.setCpf(cpf);
+        this.setSaldo(0);
     }
 
-    // Métodos de comportamento (Aula 3)
     public void adicionarSaldo(double valor) {
         if (valor <= 0) {
             System.out.println("Erro: O valor de recarga deve ser maior que zero.");
@@ -36,8 +34,19 @@ public class Passageiro {
         System.out.println("Viagem paga. Saldo restante: R$" + this.saldo);
     }
 
-    // Getters e Setters
-    public String getNome() { return this.nome; }
-    public String getCpf() { return this.cpf; }
     public double getSaldo() { return this.saldo; }
+
+    private void setSaldo(double valor) {
+        if (valor >= 0) {
+            this.saldo = valor;
+        } else {
+            System.out.println("Erro de Segurança: Tentativa de definir saldo negativo bloqueada!");
+        }
+    }
+
+    public String getNome() { return this.nome; }
+    private void setNome(String nome) { this.nome = nome; }
+
+    public String getCpf() { return this.cpf; }
+    private void setCpf(String cpf) { this.cpf = cpf; }
 }
