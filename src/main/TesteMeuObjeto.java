@@ -1,28 +1,24 @@
-package main;
+package br.com.fiapride.main;
 
-// Importando a classe Monitor do pacote model
-import model.Monitor;
+import br.com.fiapride.model.Monitor;
 
 public class TesteMeuObjeto {
 
     public static void main(String[] args) {
 
-        System.out.println("--- Teste do Meu Projeto Pessoal ---");
+        System.out.println("--- Teste do Objeto Monitor ---\n");
 
-        // 1. Instanciando o objeto (criando o espaço na memória)
-        Monitor meuMonitor = new Monitor();
+        Monitor meuMonitor = new Monitor("Preto", "AOC", "HDMI");
 
-        // 2. Definindo os atributos diretamente
-        meuMonitor.cor = "Preto";
-        meuMonitor.marca = "AOC";
-        meuMonitor.tomada = "HDMI";
-        meuMonitor.led = true;
+        System.out.println("Marca: " + meuMonitor.getMarca());
+        System.out.println("Cor: " + meuMonitor.getCor());
+        System.out.println("Entrada: " + meuMonitor.getTomada());
+        System.out.println("Status: " + (meuMonitor.isLigado() ? "Ligado" : "Desligado"));
 
-        // 3. Imprimindo o resultado no console
-        System.out.println("Cor do monitor: " + meuMonitor.cor);
-        System.out.println("Marca: " + meuMonitor.marca);
-        System.out.println("Tomada: " + meuMonitor.tomada);
-        // Operador ternário para formatar o boolean de forma legível
-        System.out.println("LED: " + (meuMonitor.led ? "Ligado" : "Desligado"));
+        System.out.println("\n--- Testando Métodos ---");
+        meuMonitor.ligar();
+        meuMonitor.ligar();    // erro: já ligado
+        meuMonitor.desligar();
+        meuMonitor.desligar(); // erro: já desligado
     }
 }
