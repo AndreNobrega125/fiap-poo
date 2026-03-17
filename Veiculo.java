@@ -4,13 +4,15 @@ public class Veiculo {
     
     private String dono;
     private String placa;
-    private int gas;
+    private int combustivel;
     private String modelo; 
     
-    public Veiculo(String placa, String modelo) {
+    public Veiculo(String dono, String placa, String modelo) {
+        this.dono = dono;
         this.setPlaca(placa);
         this.modelo = modelo;
-        System.out.println("🚗 Registro inicial: Um " + this.modelo + " nasceu com a placa " + this.placa);
+        this.combustivel = 0;
+        System.out.println("🚗 Registro inicial: Um " + this.modelo + " de " + this.dono + " nasceu com a placa " + this.placa);
     }
 
     public String getDono() {
@@ -21,8 +23,8 @@ public class Veiculo {
         return placa;
     }
 
-    public int getGas() {
-        return gas;
+    public int getCombustivel() {
+        return combustivel;
     }
 
     public String getModelo() {
@@ -31,10 +33,6 @@ public class Veiculo {
 
     public void setDono(String dono) {
         this.dono = dono;
-    }
-
-    public void setGas(int gas) {
-        this.gas = gas;
     }
 
     public void atualizarPlaca(String novaPlaca) {
@@ -51,11 +49,19 @@ public class Veiculo {
         }
     }
 
-    public void adicionar(int v) {
-        gas = gas + v;
+    public void adicionar(int quantidade) {
+        if (quantidade > 0) {
+            this.combustivel += quantidade;
+        } else {
+            System.out.println("❌ Erro: A quantidade de abastecimento deve ser maior que zero.");
+        }
     }
     
-    public void gasta(int v) {
-        gas = gas - v;
+    public void gasta(int quantidade) {
+        if (quantidade > 0 && this.combustivel >= quantidade) {
+            this.combustivel -= quantidade;
+        } else {
+            System.out.println("❌ Erro: Combustível insuficiente para essa viagem ou quantidade inválida.");
+        }
     }
 }
