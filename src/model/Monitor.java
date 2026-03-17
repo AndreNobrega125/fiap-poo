@@ -1,21 +1,52 @@
 package br.com.fiapride.model;
 
 public class Monitor {
-
-    private String cor;
+    
     private String marca;
+    private String cor;
+    private int tamanhoPolegadas;
     private String tomada;
     private boolean ligado;
-    private int tamanhoPolegadas; // ← FALTAVA ISSO
 
-    public Monitor(String cor, String marca, String tomada, int tamanhoPolegadas) {
-        this.cor = cor;
-        this.marca = marca;
-        this.tomada = tomada;
-        this.ligado = false;
+    // MISSÃO 1 e 2: Construtor criado exigindo 3 atributos essenciais
+    public Monitor(String marca, String cor, int tamanhoPolegadas) {
+        
+        // MISSÃO 3: Atribuições usando os setters dentro do construtor
+        this.setMarca(marca);
+        this.setCor(cor);
         this.setTamanhoPolegadas(tamanhoPolegadas);
+        
+        // Atributos não essenciais para o nascimento ganham valores padrão
+        this.tomada = "Desconectada"; 
+        this.ligado = false; 
     }
 
+    // Setters privados para uso no construtor (Segurança / Clean Code)
+    private void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    private void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    // Seu setter de polegadas que faz a validação perfeitamente!
+    public void setTamanhoPolegadas(int tamanho) {
+        if (tamanho >= 10 && tamanho <= 100) {
+            this.tamanhoPolegadas = tamanho;
+        } else {
+            System.out.println("❌ Erro: Tamanho " + tamanho + " inválido! O monitor deve ter entre 10 e 100 polegadas.");
+        }
+    }
+
+    // Getters
+    public String getMarca() { return this.marca; }
+    public String getCor() { return this.cor; }
+    public int getTamanhoPolegadas() { return this.tamanhoPolegadas; }
+    public String getTomada() { return this.tomada; }
+    public boolean isLigado() { return this.ligado; }
+
+    // Métodos de comportamento
     public void ligar() {
         if (this.ligado) {
             System.out.println("Erro: O monitor já está ligado.");
@@ -32,19 +63,5 @@ public class Monitor {
         }
         this.ligado = false;
         System.out.println("Monitor " + this.marca + " desligado.");
-    }
-
-    public String getCor() { return this.cor; }
-    public String getMarca() { return this.marca; }
-    public String getTomada() { return this.tomada; }
-    public boolean isLigado() { return this.ligado; }
-    public int getTamanhoPolegadas() { return this.tamanhoPolegadas; }
-
-    public void setTamanhoPolegadas(int tamanho) {
-        if (tamanho < 10 || tamanho > 100) {
-            System.out.println("Erro: Tamanho inválido! O monitor deve ter entre 10 e 100 polegadas.");
-            return;
-        }
-        this.tamanhoPolegadas = tamanho;
     }
 }
