@@ -1,40 +1,23 @@
 package br.com.fiapride.model;
 
 public class Veiculo {
-
-    private String dono;
     private String placa;
-    private int gas;
+    private String modelo;
 
-    public String getDono() {
-        return dono;
+    // Construtor exige apenas placa e modelo, igual ao seu Astah
+    public Veiculo(String placa, String modelo) {
+        this.setPlaca(placa); // Usa o setter privado para validar
+        this.modelo = modelo;
     }
 
-    public void setDono(String dono) {
-        this.dono = dono;
+    public String getPlaca() { return this.placa; }
+    public String getModelo() { return this.modelo; }
+
+    public void atualizarPlaca(String novaPlaca) {
+        this.setPlaca(novaPlaca);
     }
 
-    public String getPlaca() {
-        return placa;
-    }
-
-    public void setPlaca(String placa) {
-        this.placa = placa;
-    }
-
-    public int getGas() {
-        return gas;
-    }
-
-    public void setGas(int gas) {
-        this.gas = gas;
-    }
-
-    public void adicionar(int v) {
-        gas = gas + v;
-    }
-
-    public void gasta(int v) {
-        gas = gas - v;
+    private void setPlaca(String novaPlaca) {
+        this.placa = novaPlaca;
     }
 }
