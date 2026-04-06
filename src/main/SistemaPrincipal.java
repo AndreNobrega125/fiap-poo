@@ -1,21 +1,25 @@
 package br.com.fiapride.main;
 
-import br.com.fiapride.model.Passageiro;
-import br.com.fiapride.model.Veiculo;
-import br.com.fiapride.model.Viagem;
+import br.com.fiapride.model.Carro;
+import br.com.fiapride.model.Moto;
 
 public class SistemaPrincipal {
     public static void main(String[] args) {
-        System.out.println("--- FIAPRIDE: Inicializando Sistema ---");
         
-        // 1. Criando os objetos
-        Passageiro ana = new Passageiro("Ana Silva", "222.222.222-22");
-        Veiculo corolla = new Veiculo("ABC-1234", "Toyota Corolla");
+        System.out.println("--- FIAPRIDE: Teste de Frota com Herança ---\n");
         
-        // 2. Associando na Viagem
-        Viagem viagemDaAna = new Viagem("Avenida Paulista, 1000", ana, corolla);
+        // Instanciando as subclasses       
+        Carro uberX = new Carro("ABC-1234", "Chevrolet Onix", 4);
+        Moto mottu = new Moto("XYZ-9999", "Caloi City", true);
         
-        // 3. Imprimindo o resumo
-        viagemDaAna.exibirResumo();
+        // Acessando os atributos da Superclasse (Veiculo)    
+        System.out.println("🚗 Carro modelo: " + uberX.getModelo() + " | Placa: " + uberX.getPlaca());
+        System.out.println("   Vagas para passageiros: " + uberX.getCapacidadePassageiros());
+        
+        System.out.println("\n🏍️ Moto modelo: " + mottu.getModelo() + " | Placa: " + mottu.getPlaca());
+        
+        if (mottu.isEletrica()) {
+            System.out.println("   Atenção: Esta moto é elétrica.");
+        }
     }
 }
