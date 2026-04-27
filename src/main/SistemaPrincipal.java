@@ -1,8 +1,5 @@
 package br.com.fiapride.main;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import br.com.fiapride.model.Carro;
 import br.com.fiapride.model.Moto;
 import br.com.fiapride.model.Veiculo;
@@ -11,24 +8,28 @@ public class SistemaPrincipal {
 
     public static void main(String[] args) {
 
-        System.out.println("--- FIAPRIDE: Teste de Polimorfismo ---\n");
+        System.out.println("=== FIAPRIDE: Teste de Classes Abstratas ===");
+        System.out.println();
 
-        List<Veiculo> frota = new ArrayList<>();
+        Veiculo taxi = new Carro("ABC-1234", "Chevrolet Onix", 4);
+        Veiculo mototaxi = new Moto("MOT-9999", "Honda Biz", false);
 
-        Carro uberX = new Carro("ABC-1234", "Chevrolet Onix", 4);
-        Moto mottu = new Moto("XYZ-9999", "Honda CG 160", false);
+        System.out.println("Identificacao dos Veiculos:");
+        taxi.exibirTipo();
+        mototaxi.exibirTipo();
 
-        uberX.abastecer(50);
-        mottu.abastecer(50);
+        System.out.println();
+        System.out.println("=== Polimorfismo com Classe Abstrata ===");
 
-        frota.add(uberX);
-        frota.add(mottu);
+        Veiculo[] frota = new Veiculo[] {
+            new Carro("CAR-1111", "Fiat Uno", 4),
+            new Moto("MOT-2222", "Yamaha", false),
+            new Carro("CAR-3333", "Honda Civic", 5)
+        };
 
-        for (Veiculo veiculo : frota) {
-            System.out.println("Modelo: " + veiculo.getModelo());
-            System.out.println("Placa: " + veiculo.getPlaca());
-            System.out.println(veiculo.calcularAutonomia());
-            System.out.println("-----------------------------");
+        for (Veiculo v : frota) {
+            v.exibirTipo();
+            System.out.println("---");
         }
     }
 }
