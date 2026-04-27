@@ -14,6 +14,11 @@ public class Moto extends Veiculo {
     }
 
     @Override
+    public void exibirTipo() {
+        System.out.println("Sou uma Moto");
+    }
+
+    @Override
     public String calcularAutonomia() {
         if (this.isEletrica) {
             return "Moto eletrica: autonomia calculada de forma especifica para bateria.";
