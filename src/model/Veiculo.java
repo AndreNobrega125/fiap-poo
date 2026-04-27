@@ -1,6 +1,6 @@
 package br.com.fiapride.model;
 
-public class Veiculo {
+public abstract class Veiculo {
 
     private String placa;
     private String modelo;
@@ -31,6 +31,8 @@ public class Veiculo {
             System.out.println("Erro: placa invalida.");
         }
     }
+
+    public abstract void exibirTipo();
 
     public String calcularAutonomia() {
         return "Autonomia nao definida para um veiculo generico.";
