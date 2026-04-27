@@ -1,19 +1,20 @@
 package br.com.fiapride.model;
 
 public class MonitorGamer extends Monitor {
-    
-    private int taxaAtualizacaoHz;
 
-    public MonitorGamer(String marca, String cor, int tamanhoPolegadas, Computador pcConectado, int taxaAtualizacaoHz) {
-        super(marca, cor, tamanhoPolegadas, pcConectado); 
-        this.taxaAtualizacaoHz = taxaAtualizacaoHz;
+    private int taxaHz;
+
+    public MonitorGamer(String cor, String marca, String tomada, int tamanhoPolegadas, int taxaHz) {
+        super(cor, marca, tomada, tamanhoPolegadas);
+        this.taxaHz = taxaHz;
     }
 
-    public int getTaxaAtualizacaoHz() { 
-        return this.taxaAtualizacaoHz; 
+    public int getTaxaHz() {
+        return this.taxaHz;
     }
 
-    public void ativarModoGamer() {
-        System.out.println("🚀 Modo Gamer ativado! Rodando a " + this.taxaAtualizacaoHz + "Hz!");
+    @Override
+    public String exibirModoUso() {
+        return "Monitor gamer com " + this.taxaHz + " Hz, ideal para jogos.";
     }
 }
