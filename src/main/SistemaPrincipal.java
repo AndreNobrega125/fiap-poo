@@ -1,25 +1,34 @@
 package br.com.fiapride.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import br.com.fiapride.model.Carro;
 import br.com.fiapride.model.Moto;
+import br.com.fiapride.model.Veiculo;
 
 public class SistemaPrincipal {
+
     public static void main(String[] args) {
-        
-        System.out.println("--- FIAPRIDE: Teste de Frota com Herança ---\n");
-        
-        // Instanciando as subclasses       
+
+        System.out.println("--- FIAPRIDE: Teste de Polimorfismo ---\n");
+
+        List<Veiculo> frota = new ArrayList<>();
+
         Carro uberX = new Carro("ABC-1234", "Chevrolet Onix", 4);
-        Moto mottu = new Moto("XYZ-9999", "Caloi City", true);
-        
-        // Acessando os atributos da Superclasse (Veiculo)    
-        System.out.println("🚗 Carro modelo: " + uberX.getModelo() + " | Placa: " + uberX.getPlaca());
-        System.out.println("   Vagas para passageiros: " + uberX.getCapacidadePassageiros());
-        
-        System.out.println("\n🏍️ Moto modelo: " + mottu.getModelo() + " | Placa: " + mottu.getPlaca());
-        
-        if (mottu.isEletrica()) {
-            System.out.println("   Atenção: Esta moto é elétrica.");
+        Moto mottu = new Moto("XYZ-9999", "Honda CG 160", false);
+
+        uberX.abastecer(50);
+        mottu.abastecer(50);
+
+        frota.add(uberX);
+        frota.add(mottu);
+
+        for (Veiculo veiculo : frota) {
+            System.out.println("Modelo: " + veiculo.getModelo());
+            System.out.println("Placa: " + veiculo.getPlaca());
+            System.out.println(veiculo.calcularAutonomia());
+            System.out.println("-----------------------------");
         }
     }
 }
